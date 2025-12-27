@@ -1,0 +1,172 @@
+:root{
+  --bg: #4fae9c;          /* türkis */
+  --ink: #0f0f0f;         /* fast schwarz */
+  --panel: rgba(255,255,255,0.12);
+  --panel-border: rgba(0,0,0,0.65);
+  --btn: #c9bf74;         /* gelblich wie im Design */
+  --btn-pressed: #bdbdbd; /* grau beim Drücken */
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  overflow:hidden;
+}
+
+/* leichter “grain” Look */
+.noise{
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  opacity: 0.14;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  mix-blend-mode: overlay;
+}
+
+.screen{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 18px 18px 26px 18px;
+  padding-top: calc(18px + env(safe-area-inset-top));
+  padding-bottom: calc(26px + env(safe-area-inset-bottom));
+}
+
+/* Left rail */
+.left-rail{
+  position:absolute;
+  top: calc(18px + env(safe-area-inset-top));
+  left: 10px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 14px;
+}
+.rail-line{
+  width: 3px;
+  height: 120px;
+  background: var(--ink);
+  opacity: 0.85;
+}
+.rail-text{
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  opacity: 0.55;
+}
+
+/* Topbar */
+.topbar{
+  margin: 0 auto;
+  width: min(760px, 92vw);
+  height: 56px;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 2px solid var(--panel-border);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 0 14px;
+}
+
+.stat{
+  display:flex;
+  align-items:baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stat-label{
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 18px;
+}
+
+.stat-value{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.divider{
+  width: 2px;
+  height: 70%;
+  background: var(--panel-border);
+  opacity: 0.75;
+  border-radius: 2px;
+}
+
+/* Plus button */
+.plus-btn{
+  position:absolute;
+  top: calc(96px + env(safe-area-inset-top));
+  right: 28px;
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  border: 2px solid var(--panel-border);
+  background: var(--btn);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.plus-icon{
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 300;
+  transform: translateY(-2px);
+}
+
+/* Beim drücken: grau */
+.plus-btn:active{
+  background: var(--btn-pressed);
+}
+
+/* Image area */
+.image-area{
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(40px + env(safe-area-inset-bottom));
+  width: min(520px, 76vw);
+  aspect-ratio: 3 / 4.2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.image-area img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Status text (debug/feedback) */
+.status{
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  margin:0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Mobile tuning */
+@media (max-width: 420px){
+  .topbar{ height: 54px; }
+  .stat-label, .stat-value{ font-size: 16px; }
+  .plus-btn{ width: 78px; height: 78px; right: 18px; }
+  .plus-icon{ font-size: 52px; }
+}

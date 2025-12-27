@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Bierarsch Counter</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <main class="screen">
+    <!-- Left design element -->
+    <aside class="left-rail" aria-hidden="true">
+      <div class="rail-line"></div>
+      <div class="rail-text">silv 25 oberammergau</div>
+    </aside>
+
+    <!-- Top status bar -->
+    <header class="topbar">
+      <div class="stat stat-left">
+        <div class="stat-label">BIERARSCH:</div>
+        <div class="stat-value" id="counterValue">–</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat stat-right">
+        <div class="stat-label">BAPM:</div>
+        <div class="stat-value" id="bapmValue">–</div>
+      </div>
+    </header>
+
+    <!-- Plus button -->
+    <button class="plus-btn" id="plusBtn" aria-label="Counter erhöhen">
+      <span class="plus-icon">+</span>
+    </button>
+
+    <!-- Image area -->
+    <section class="image-area">
+      <img id="stageImage" alt="Bierarsch Bildstufe" />
+    </section>
+
+    <p class="status" id="statusText"></p>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
