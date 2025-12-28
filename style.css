@@ -2,9 +2,14 @@
   --bg: #4fae9c;          /* türkis */
   --ink: #282727;         /* fast schwarz */
   --panel: rgba(255,255,255,0.12);
-  --panel-border: rgba(0,0,0,0.65);
+  --panel-border:  #282727;
   --btn: #c9bf74;         /* gelblich wie im Design */
   --btn-pressed: #bdbdbd; /* grau beim Drücken */
+  --top-safe: calc(18px + env(safe-area-inset-top));
+  --topbar-h: 56px;
+  --gap-under-topbar: 18px; /* Abstand zwischen Topbar und Image-Area */
+  --image-max-w: 520px;     /* maximale Breite */
+  --image-max-h: 70vh;      /* maximale Höhe (anpassen) */
 }
 
 *{ box-sizing: border-box; }
@@ -35,13 +40,12 @@ body{
   height: 100%;
   width: 100%;
   padding: 18px 18px 26px 18px;
-  padding-top: calc(18px + env(safe-area-inset-top));
+  padding-top: calc(28px + env(safe-area-inset-top));
   /*padding-bottom: calc(26px + env(safe-area-inset-bottom));*/
 }
 
 /* Left rail */
 .left-rail{
-  
   position:absolute;
   top: calc(60px + env(safe-area-inset-top));
   left: 5px;
@@ -49,6 +53,7 @@ body{
   flex-direction: column;
   align-items:center;
   gap: 14px;
+  z-index: 3;
 }
 .rail-line{
   width: 1.5px;
@@ -77,6 +82,7 @@ body{
   align-items:center;
   justify-content: space-between;
   padding: 0 14px;
+  z-index: 5;
 }
 
 .stat{
@@ -84,20 +90,19 @@ body{
   align-items:baseline;
   gap: 10px;
   min-width: 0;
-  background-color: #c9bf74;
+  /*background-color: #c9bf74;*/
 }
 
 .stat-label{
-  background-color: antiquewhite;
+  /*background-color: antiquewhite;*/
   font-weight: 600;
   letter-spacing: 0.02em;
-  font-size: 15px;
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
 }
 
 .stat-value{
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .divider{
@@ -110,9 +115,9 @@ body{
 
 /* Plus button */
 .plus-btn{
-  background-color: blue;
+  /*background-color: blue;*/
   position:absolute;
-  top: calc(96px + env(safe-area-inset-top));
+  top: calc(110px + env(safe-area-inset-top));
   right: 26px;
   width: 66px;
   height: 66px;
@@ -124,10 +129,11 @@ body{
   cursor:pointer;
   user-select:none;
   -webkit-tap-highlight-color: transparent;
+  z-index: 4;
 }
 
 .plus-icon{
-  background-color: violet;
+  /*background-color: violet;*/
   color: var(--ink);
   font-size: 46px;
   line-height: 1;
@@ -145,22 +151,23 @@ body{
 
 /* Image area */
 .image-area{
-  position:absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(0px + env(safe-area-inset-bottom));
-  width: min(520px, 76vw);
-  aspect-ratio: 3 / 4.2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background-color: rosybrown;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: calc(var(--top-safe) + var(--topbar-h) + var(--gap-under-topbar));
+  /* Bühne: Zentrierung des Inhalts */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
 }
 
 .image-area img{
-  width: 100%;
-  height: 100%;
+  width: min(100vw, var(--image-max-w));
+  max-height: 100%;
   object-fit: contain;
-  border-radius: 10px;
 }
 
 /* Status text (debug/feedback) */
@@ -176,7 +183,7 @@ body{
 
 /* Mobile tuning */
 @media (max-width: 420px){
-  .topbar{ height: 50px; }
+  .topbar{ height: 45px; }
   .stat-label, .stat-value{ font-size: 16px; }
   .plus-btn{ width: 58px; height: 58px; right: 18px; }
   .plus-icon{ font-size: 32px; }

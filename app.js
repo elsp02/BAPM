@@ -15,7 +15,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 // 2) Config
 const COUNTER_ID = "global";
-const STEP_SIZE = 10; // Bildstufen: 0–9 => stage0, 10–19 => stage1, ...
+const STEP_SIZE = 15; // Bildstufen: 0–9 => stage0, 10–19 => stage1, ...
 
 // 3) DOM ?
 const counterEl = document.getElementById("counterValue");
@@ -32,7 +32,7 @@ function stageIndexFromValue(value) {
 }
 
 function stageSrcForIndex(i) {
-  return `./img/bierarsch2.png`;
+  return `./img/bierarsch${i}.png`;
 }
 
 function formatBapm(bapm) {
