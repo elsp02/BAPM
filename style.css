@@ -1,6 +1,6 @@
 :root{
   --bg: #4fae9c;          /* türkis */
-  --ink: #0f0f0f;         /* fast schwarz */
+  --ink: #282727;         /* fast schwarz */
   --panel: rgba(255,255,255,0.12);
   --panel-border: rgba(0,0,0,0.65);
   --btn: #c9bf74;         /* gelblich wie im Design */
@@ -23,7 +23,7 @@ body{
   position: fixed;
   inset: 0;
   pointer-events:none;
-  opacity: 0.14;
+  opacity: 1.0;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
   background-size: 260px 260px;
@@ -36,21 +36,22 @@ body{
   width: 100%;
   padding: 18px 18px 26px 18px;
   padding-top: calc(18px + env(safe-area-inset-top));
-  padding-bottom: calc(26px + env(safe-area-inset-bottom));
+  /*padding-bottom: calc(26px + env(safe-area-inset-bottom));*/
 }
 
 /* Left rail */
 .left-rail{
+  
   position:absolute;
-  top: calc(18px + env(safe-area-inset-top));
-  left: 10px;
+  top: calc(60px + env(safe-area-inset-top));
+  left: 5px;
   display:flex;
   flex-direction: column;
   align-items:center;
   gap: 14px;
 }
 .rail-line{
-  width: 3px;
+  width: 1.5px;
   height: 120px;
   background: var(--ink);
   opacity: 0.85;
@@ -59,18 +60,19 @@ body{
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   letter-spacing: 0.08em;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.55;
+  color: var(--ink);
 }
 
 /* Topbar */
 .topbar{
   margin: 0 auto;
-  width: min(760px, 92vw);
+  width: min(700px, 92vw);
   height: 56px;
   border-radius: 12px;
   background: var(--panel);
-  border: 2px solid var(--panel-border);
+  border: 1.5px solid var(--panel-border);
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -82,21 +84,24 @@ body{
   align-items:baseline;
   gap: 10px;
   min-width: 0;
+  background-color: #c9bf74;
 }
 
 .stat-label{
-  font-weight: 700;
+  background-color: antiquewhite;
+  font-weight: 600;
   letter-spacing: 0.02em;
-  font-size: 18px;
+  font-size: 15px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .stat-value{
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .divider{
-  width: 2px;
+  width: 1.5px;
   height: 70%;
   background: var(--panel-border);
   opacity: 0.75;
@@ -105,13 +110,14 @@ body{
 
 /* Plus button */
 .plus-btn{
+  background-color: blue;
   position:absolute;
   top: calc(96px + env(safe-area-inset-top));
-  right: 28px;
-  width: 86px;
-  height: 86px;
+  right: 26px;
+  width: 66px;
+  height: 66px;
   border-radius: 999px;
-  border: 2px solid var(--panel-border);
+  border: 1.5px solid var(--panel-border);
   background: var(--btn);
   display:grid;
   place-items:center;
@@ -121,10 +127,15 @@ body{
 }
 
 .plus-icon{
-  font-size: 56px;
+  background-color: violet;
+  color: var(--ink);
+  font-size: 46px;
   line-height: 1;
   font-weight: 300;
   transform: translateY(-2px);
+}
+.plus-btn:hover{
+  filter: brightness(1.05);
 }
 
 /* Beim drücken: grau */
@@ -137,7 +148,7 @@ body{
   position:absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(40px + env(safe-area-inset-bottom));
+  bottom: calc(0px + env(safe-area-inset-bottom));
   width: min(520px, 76vw);
   aspect-ratio: 3 / 4.2;
   display:flex;
@@ -153,7 +164,7 @@ body{
 }
 
 /* Status text (debug/feedback) */
-.status{
+/*.status{
   position:absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -161,12 +172,12 @@ body{
   margin:0;
   font-size: 14px;
   opacity: 0.7;
-}
+}*/
 
 /* Mobile tuning */
 @media (max-width: 420px){
-  .topbar{ height: 54px; }
+  .topbar{ height: 50px; }
   .stat-label, .stat-value{ font-size: 16px; }
-  .plus-btn{ width: 78px; height: 78px; right: 18px; }
-  .plus-icon{ font-size: 52px; }
+  .plus-btn{ width: 58px; height: 58px; right: 18px; }
+  .plus-icon{ font-size: 32px; }
 }

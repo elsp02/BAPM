@@ -32,7 +32,7 @@ function stageIndexFromValue(value) {
 }
 
 function stageSrcForIndex(i) {
-  return `./img/bierarsch.png`;
+  return `./img/bierarsch2.png`;
 }
 
 function formatBapm(bapm) {
