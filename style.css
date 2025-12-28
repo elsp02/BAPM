@@ -4,7 +4,7 @@
   --panel: rgba(255,255,255,0.12);
   --panel-border:  #282727;
   --btn: #c9bf74;         /* gelblich wie im Design */
-  --btn-pressed: #bdbdbd; /* grau beim Drücken */
+  --btn-pressed: #adadadda; /* grau beim Drücken */
   
   /*--topbar-h: 56px;*/
   /*--gap-under-topbar: 18px; Abstand zwischen Topbar und Image-Area */
@@ -144,6 +144,7 @@ body{
 }
 .plus-btn:hover{
   filter: brightness(1.05);
+  background:  var(--btn-pressed);
 }
 
 /* Beim drücken: grau */
